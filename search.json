@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistical Modeling - 24DS636 (2024-25)",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Engineering_Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Lines.html",
+    "href": "Proj_Of_Lines.html",
+    "title": "2  Projection of Lines",
+    "section": "",
+    "text": "import matplotlib.pyplot as plt\nimport numpy as np\n\n# Line parameters\nlength = 8  # true length of the line\ntheta = 45  # inclination with VP in degrees\n\n# Plan (top view): line parallel to XY (since parallel to HP)\nx_plan = [2, 2 + length]\ny_plan = [2, 2]\n\n# Elevation (front view): inclined to XY by theta\nx_elev = [2, 2 + length * np.cos(np.radians(theta))]\ny_elev = [5, 5 + length * np.sin(np.radians(theta))]\n\nfig, axs = plt.subplots(1, 2, figsize=(10, 4))\n\n# Plan view\naxs[0].plot(x_plan, y_plan, marker='o')\naxs[0].set_title('Plan (Top View)')\naxs[0].set_xlabel('X')\naxs[0].set_ylabel('Y')\naxs[0].set_aspect('equal')\naxs[0].grid(True)\naxs[0].annotate('A\\'', (x_plan[0], y_plan[0]), textcoords=\"offset points\", xytext=(-10,10), ha='center')\naxs[0].annotate('B\\'', (x_plan[1], y_plan[1]), textcoords=\"offset points\", xytext=(10,10), ha='center')\n\n# Elevation view\naxs[1].plot(x_elev, y_elev, marker='o', color='orange')\naxs[1].set_title('Elevation (Front View)')\naxs[1].set_xlabel('X')\n\nText(0.5, 0, 'X')",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Projection of Lines</span>"
+    ]
+  }
+]
