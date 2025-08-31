@@ -1,0 +1,38 @@
+---
+title: "Projection of Lines"
+---
+
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Line parameters
+length = 8  # true length of the line
+theta = 45  # inclination with VP in degrees
+
+# Plan (top view): line parallel to XY (since parallel to HP)
+x_plan = [2, 2 + length]
+y_plan = [2, 2]
+
+# Elevation (front view): inclined to XY by theta
+x_elev = [2, 2 + length * np.cos(np.radians(theta))]
+y_elev = [5, 5 + length * np.sin(np.radians(theta))]
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+
+# Plan view
+axs[0].plot(x_plan, y_plan, marker='o')
+axs[0].set_title('Plan (Top View)')
+axs[0].set_xlabel('X')
+axs[0].set_ylabel('Y')
+axs[0].set_aspect('equal')
+axs[0].grid(True)
+axs[0].annotate('A\'', (x_plan[0], y_plan[0]), textcoords="offset points", xytext=(-10,10), ha='center')
+axs[0].annotate('B\'', (x_plan[1], y_plan[1]), textcoords="offset points", xytext=(10,10), ha='center')
+
+# Elevation view
+axs[1].plot(x_elev, y_elev, marker='o', color='orange')
+axs[1].set_title('Elevation (Front View)')
+axs[1].set_xlabel('X')
+```
