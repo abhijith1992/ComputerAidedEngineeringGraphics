@@ -14,7 +14,37 @@
     "href": "Proj_Of_Planes.html",
     "title": "3  Projection of Planes",
     "section": "",
-    "text": "4 Projection of Planes\nThis document covers the basics and methods for projecting planes in engineering graphics.",
+    "text": "3.1 Introduction",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Projection of Planes</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Planes.html#introduction",
+    "href": "Proj_Of_Planes.html#introduction",
+    "title": "3  Projection of Planes",
+    "section": "",
+    "text": "A plane is a two-dimensional surface that has only length and breadth; its thickness is considered negligible.\nIn engineering graphics, planes are depicted using various geometric shapes, including:\n\nSquares\nRectangles\nCircles\nPentagons\nHexagons\nOther polygons\n\nThese plane figures form the foundation for understanding and visualizing the projection of objects onto different reference planes.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Projection of Planes</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Planes.html#typical-problem-statements",
+    "href": "Proj_Of_Planes.html#typical-problem-statements",
+    "title": "3  Projection of Planes",
+    "section": "3.2 Typical Problem Statements",
+    "text": "3.2 Typical Problem Statements\n\nWhat is usually asked in problems?\n\nTo draw the projections:\n\nFront View (F.V.)\nTop View (T.V.)\nSide View (S.V.)\n\n\nWhat information will be given in the problem?\n\nThe type/description of the plane figure (triangle, square, hexagon, etc.).\nIts position with respect to Horizontal Plane (H.P.) and Vertical Plane (V.P.).\n\nHow will the position with H.P. & V.P. be described?\n\nThe incination of the surface/ lamina of the plane with one of the reference planes is given.\nThe position/inclination of one of its corners/edges with repect to the other reference plane.\nThis means the plane, we consider, is usually inclined to both reference planes.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Projection of Planes</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Planes.html#stages-for-drawing-projections-when-a-plane-is-inclined",
+    "href": "Proj_Of_Planes.html#stages-for-drawing-projections-when-a-plane-is-inclined",
+    "title": "3  Projection of Planes",
+    "section": "3.3 Stages for Drawing Projections When a Plane is Inclined",
+    "text": "3.3 Stages for Drawing Projections When a Plane is Inclined\n\n\n\nStages of Drawing Projections for an Inclined Plane.\nImage reference: https://iitg.ac.in/kpmech\n\n\nThe process starts by assuming an initial simple position, then introducing the surface inclination, and finally introducing the side/edge inclination.\n\nInitial Position: Surface Parallel to one Reference Plane\n\nAssumption: The plane figure is initially assumed to be parallel to one of the reference planes (either HP or VP). This allows one of its views to show its true shape.\nViews:\n\nIf the surface is assumed parallel to HP, the Top View (TV) will show the true shape of the plane figure. The Front View (FV) will appear as a line parallel to the XY line.\nIf the surface is assumed parallel to VP, the Front View (FV) will show the true shape of the plane figure. The Top View (TV) will appear as a line parallel to the XY line.\n\n\nSurface Inclination\n\nDescription: The inclination of the plane’s surface (lamina) with one of the reference planes is introduced in this step.\nTransformation: The view that was a line in the previous step (e.g., FV if the surface was parallel to HP) will now be drawn inclined to the XY line at the given angle. The other view (e.g., TV) will show a reduced shape.\n\nEdge/Side Inclination with the Other Reference Plane\n\nDescription: The inclination of one of the plane’s edges (or a specific feature like a diameter or diagonal) with the other reference plane is introduced. This leads to a case where the object is inclined to both reference planes.\nTransformation: The view from the previous step that showed the “reduced shape” (e.g., TV in Problem 1) is now redrawn such that the specified edge or feature makes the given angle with the XY line (representing the other reference plane). The final views will show apparent shapes.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Projection of Planes</span>"
     ]
