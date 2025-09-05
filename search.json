@@ -1,5 +1,45 @@
 [
   {
+    "objectID": "Proj_Of_Lines.html",
+    "href": "Proj_Of_Lines.html",
+    "title": "2  Projection of Lines",
+    "section": "",
+    "text": "2.1 Introduction\nProjection of lines is a fundamental topic in engineering graphics. It involves representing a line in different planes (such as the horizontal plane and vertical plane) to understand its true length and inclination.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Projection of Lines</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Lines.html#objectives",
+    "href": "Proj_Of_Lines.html#objectives",
+    "title": "2  Projection of Lines",
+    "section": "2.2 Objectives",
+    "text": "2.2 Objectives\n\nUnderstand the concept of projection of lines.\nLearn to draw projections of lines inclined to one or both reference planes.\nSolve typical problems related to projection of lines.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Projection of Lines</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Lines.html#basic-concepts",
+    "href": "Proj_Of_Lines.html#basic-concepts",
+    "title": "2  Projection of Lines",
+    "section": "2.3 Basic Concepts",
+    "text": "2.3 Basic Concepts\n\nProjection: The representation of an object on a plane.\nReference Planes: Usually the Horizontal Plane (HP) and Vertical Plane (VP).\nTrue Length: The actual length of the line in 3D space.\nApparent Length: The length of the line as seen in the projection.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Projection of Lines</span>"
+    ]
+  },
+  {
+    "objectID": "Proj_Of_Lines.html#types-of-line-positions",
+    "href": "Proj_Of_Lines.html#types-of-line-positions",
+    "title": "2  Projection of Lines",
+    "section": "2.4 Types of Line Positions",
+    "text": "2.4 Types of Line Positions\n\n2.4.1 Line parallel to both HP and VP.\n\nIn this scenario, the projections on both the V.P. (front view) and H.P. (top view) will display the true length of the line.\n\n\n\n\nProjection of a line parallel to both HP and VP\n\n\n\n\n2.4.2 Line parallel to one plane and perpendicular to the other.\n\nWhen the line is parallel to the V.P., its projection on the V.P. (front view) shows the true length, while its projection on the H.P. (top view) appears as a point.\nWhen the line is parallel to the H.P., its projection on the H.P. (top view) shows the true length, while its projection on the V.P. (front view) appears as a point.\n\n\n\n\nProjection of a line parallel to one plane and perpendicular to the other\n\n\n\n\n2.4.3 Line parallel to one plane and inclined to the other.\n\nIf the line is parallel to the V.P. and inclined to the H.P., the front view (on V.P.) will show the true length (TL), while the top view (on H.P.) will display an apparent length (shorter than the TL).\nIf the line is parallel to the H.P. and inclined to the V.P., the top view (on H.P.) will show the true length (TL), while the front view (on V.P.) will display an apparent length (shorter than the TL).\n\n\n\n\nProjection of a line parallel to one plane and inclined to the other\n\n\n\n\n2.4.4 Line inclined to both HP and VP.\n\n\n\nProjection of a line inclined to both HP and VP\n\n\n\nWhen a line is inclined to both the HP and VP, neither projection (front view or top view) shows the true length. Both projections appear shorter than the actual length of the line.\nThe true length and true inclinations can be determined using auxiliary views or by rotating the projections.\n\n\n2.4.4.1 Rotating Line AB to AB₁ (Making it Parallel to VP)\nTo determine the true length and inclination of a line inclined to both HP and VP, we often use the rotation method. In this method, the line AB is rotated about one of its ends (say, point A) until it becomes parallel to the VP, resulting in a new position AB₁.\n\nFront View (Projection on VP): When AB is rotated to AB₁ (parallel to VP), the front view shows the true length of the line.\nTop View (Projection on HP): The top view during this rotation will show the apparent length, which is shorter than the true length.\n\n\n\n2.4.4.2 Rotating Line AB to AB₂ (Making it Parallel to HP)\nSimilarly, to find the true length and inclination of a line, the line AB can be rotated about one of its ends (say, point A) until it becomes parallel to the HP, resulting in a new position AB₂.\n\nTop View (Projection on HP): When AB is rotated to AB₂ (parallel to HP), the top view shows the true length of the line.\nFront View (Projection on VP): The front view during this rotation will show the apparent length, which is shorter than the true length.\n\nImage reference: IIT Guwahati Engineering Graphics",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Projection of Lines</span>"
+    ]
+  },
+  {
     "objectID": "Proj_Of_Planes.html",
     "href": "Proj_Of_Planes.html",
     "title": "3  Projection of Planes",
@@ -34,7 +74,7 @@
     "href": "Proj_Of_Planes.html#stages-for-drawing-projections-when-a-plane-is-inclined",
     "title": "3  Projection of Planes",
     "section": "3.3 Stages for Drawing Projections When a Plane is Inclined",
-    "text": "3.3 Stages for Drawing Projections When a Plane is Inclined\n\n\n\nStages of Drawing Projections for an Inclined Plane.\nImage reference: https://iitg.ac.in/kpmech\n\n\nThe process starts by assuming an initial simple position, then introducing the surface inclination, and finally introducing the side/edge inclination.\n\nInitial Position: Surface Parallel to one Reference Plane\n\nAssumption: The plane figure is initially assumed to be parallel to one of the reference planes (either HP or VP). This allows one of its views to show its true shape.\nViews:\n\nIf the surface is assumed parallel to HP, the Top View (TV) will show the true shape of the plane figure. The Front View (FV) will appear as a line parallel to the XY line.\nIf the surface is assumed parallel to VP, the Front View (FV) will show the true shape of the plane figure. The Top View (TV) will appear as a line parallel to the XY line.\n\n\nSurface Inclination\n\nDescription: The inclination of the plane’s surface (lamina) with one of the reference planes is introduced in this step.\nTransformation: The view that was a line in the previous step (e.g., FV if the surface was parallel to HP) will now be drawn inclined to the XY line at the given angle. The other view (e.g., TV) will show a reduced shape.\n\nEdge/Side Inclination with the Other Reference Plane\n\nDescription: The inclination of one of the plane’s edges (or a specific feature like a diameter or diagonal) with the other reference plane is introduced. This leads to a case where the object is inclined to both reference planes.\nTransformation: The view from the previous step that showed the “reduced shape” (e.g., TV in Problem 1) is now redrawn such that the specified edge or feature makes the given angle with the XY line (representing the other reference plane). The final views will show apparent shapes.\n\n\n\n\n\n\n\n\nHow to Approach a Projection Problem\n\n\n\nRead the problem and answer the following questions:\n\n1. Surface inclined to which plane? \"H.P. or V.P.\"\n2. Assumption for initial position? \"Parallel to H.P or V.P.\"\n3. So which view will show the true shape? &mdash; \"Top view or Front View\"\n4. How to draw the edge/ corner of the plane which rests on one of the planes? \n   \"If an edge of a plane rests on plane draw the view in step - 1, with the edge perpendicular to the XY line. Instead, if a corner of a plane rests on a plane, draw the view in such a way that the line joining the corner and the center of the plane is parallel to the XY line.\"",
+    "text": "3.3 Stages for Drawing Projections When a Plane is Inclined\n\n\n\nStages of Drawing Projections for an Inclined Plane.\nimage reference\n\n\nThe process starts by assuming an initial simple position, then introducing the surface inclination, and finally introducing the side/edge inclination.\n\nInitial Position: Surface Parallel to one Reference Plane\n\nAssumption: The plane figure is initially assumed to be parallel to one of the reference planes (either HP or VP). This allows one of its views to show its true shape.\nViews:\n\nIf the surface is assumed parallel to HP, the Top View (TV) will show the true shape of the plane figure. The Front View (FV) will appear as a line parallel to the XY line.\nIf the surface is assumed parallel to VP, the Front View (FV) will show the true shape of the plane figure. The Top View (TV) will appear as a line parallel to the XY line.\n\n\nSurface Inclination\n\nDescription: The inclination of the plane’s surface (lamina) with one of the reference planes is introduced in this step.\nTransformation: The view that was a line in the previous step (e.g., FV if the surface was parallel to HP) will now be drawn inclined to the XY line at the given angle. The other view (e.g., TV) will show a reduced shape.\n\nEdge/Side Inclination with the Other Reference Plane\n\nDescription: The inclination of one of the plane’s edges (or a specific feature like a diameter or diagonal) with the other reference plane is introduced. This leads to a case where the object is inclined to both reference planes.\nTransformation: The view from the previous step that showed the “reduced shape” (e.g., TV in Problem 1) is now redrawn such that the specified edge or feature makes the given angle with the XY line (representing the other reference plane). The final views will show apparent shapes.\n\n\n\n\n\n\n\n\nNoteHow to Approach a Projection Problem\n\n\n\nRead the problem and answer the following questions:\n\n1. Surface inclined to which plane? \"H.P. or V.P.\"\n2. Assumption for initial position? \"Parallel to H.P or V.P.\"\n3. So which view will show the true shape? ; \"Top view or Front View\"\n4. How to draw the edge/ corner of the plane which rests on one of the planes? \n   \"If an edge of a plane rests on plane draw the view in step - 1, with the edge perpendicular to the XY line. Instead, if a corner of a plane rests on a plane, draw the view in such a way that the line joining the corner and the center of the plane is parallel to the XY line.\"",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Projection of Planes</span>"
     ]
