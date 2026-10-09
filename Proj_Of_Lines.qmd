@@ -1,38 +1,146 @@
 ---
 title: "Projection of Lines"
+jupyter: python3
 ---
 
+## Line parallel to HP and inclined to VP
+
+Consider a straight line **AB of true length 8 units**, parallel to the
+horizontal plane (HP) and inclined at **45° to the vertical plane (VP)**.
+This example uses **first-angle projection**, with AB above HP and in front
+of VP: the front view is above the XY reference line and the top view is below it.
+Lower-case labels $a,b$ denote the top view; $a',b'$ denote the front view.
+
+Since AB is parallel to HP, its top view shows both its **true length** and
+its **45° inclination to XY**. Its front view is parallel to XY and is
+foreshortened:
+
+$$
+ab = L = 8, \qquad a'b' = L\cos\phi = 8\cos45^\circ \approx 5.66\text{ units}.
+$$
+
+Here $\phi=45^\circ$ is the inclination to VP, while the inclination to HP
+is $\theta=0^\circ$. Both views must have the same horizontal endpoint
+separation, $\Delta x=L\cos\phi$. The change in distance from VP is
+$\Delta y=L\sin\phi$, and the change in height above HP is $\Delta z=0$.
+For positioning only, A is taken 2 units in front of VP, and both endpoints
+are 3 units above HP. B lies farther in front of VP than A.
 
 ```{python}
+#| label: fig-line-parallel-hp
+#| fig-cap: "First-angle projections of AB: the top view has true length 8 units at 45° to XY; the front view is horizontal and 5.66 units long. Dashed projectors align corresponding endpoints."
+#| fig-alt: "Front view a prime b prime above XY, horizontal and dimensioned 5.66 units; top view ab below XY, sloping down to the right at 45 degrees and dimensioned 8 units. Vertical dashed projectors connect matching endpoints."
+#| fig-width: 8
+#| fig-height: 9
+#| fig-dpi: 160
+#| echo: false
+
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.patches import Arc
 
-# Line parameters
-length = 8  # true length of the line
-theta = 45  # inclination with VP in degrees
+length = 8.0
+phi_deg = 45.0  # true inclination to VP; theta (inclination to HP) = 0
+phi = np.deg2rad(phi_deg)
 
-# Plan (top view): line parallel to XY (since parallel to HP)
-x_plan = [2, 2 + length]
-y_plan = [2, 2]
+# Physical coordinates: x along XY, y in front of VP, z above HP.
+A = np.array([2.0, 2.0, 3.0])
+B = A + np.array([length * np.cos(phi), length * np.sin(phi), 0.0])
+points = np.vstack([A, B])
 
-# Elevation (front view): inclined to XY by theta
-x_elev = [2, 2 + length * np.cos(np.radians(theta))]
-y_elev = [5, 5 + length * np.sin(np.radians(theta))]
+# Unfold HP downwards in first-angle projection: plan ordinate = -y.
+plan = points[:, [0, 1]] * np.array([1.0, -1.0])
+elevation = points[:, [0, 2]]
+front_length = np.linalg.norm(elevation[1] - elevation[0])
 
-fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+# Check the geometry before drawing the illustration.
+assert np.isclose(np.linalg.norm(B - A), length)
+assert np.isclose(np.linalg.norm(plan[1] - plan[0]), length)
+assert np.allclose(plan[:, 0], elevation[:, 0])
+assert np.isclose(elevation[0, 1], elevation[1, 1])
+assert np.isclose(front_length, length * np.cos(phi))
+assert np.isclose(np.rad2deg(np.arctan2(
+    -(plan[1, 1] - plan[0, 1]), plan[1, 0] - plan[0, 0]
+)), phi_deg)
 
-# Plan view
-axs[0].plot(x_plan, y_plan, marker='o')
-axs[0].set_title('Plan (Top View)')
-axs[0].set_xlabel('X')
-axs[0].set_ylabel('Y')
-axs[0].set_aspect('equal')
-axs[0].grid(True)
-axs[0].annotate('A\'', (x_plan[0], y_plan[0]), textcoords="offset points", xytext=(-10,10), ha='center')
-axs[0].annotate('B\'', (x_plan[1], y_plan[1]), textcoords="offset points", xytext=(10,10), ha='center')
+fig, ax = plt.subplots(figsize=(8, 9))
+front_color, plan_color = "#b45309", "#1d4ed8"
+construction_color = "#6b7280"
 
-# Elevation view
-axs[1].plot(x_elev, y_elev, marker='o', color='orange')
-axs[1].set_title('Elevation (Front View)')
-axs[1].set_xlabel('X')
+# Shared XY reference and projectors, perpendicular to XY.
+ax.axhline(0, color="black", linewidth=1.2)
+ax.text(-0.3, 0.2, "X", ha="center", fontsize=12)
+ax.text(9.3, 0.2, "Y", ha="center", fontsize=12)
+ax.text(4.8, 0.25, "XY reference line", ha="center", fontsize=10)
+for top, front in zip(plan, elevation):
+    ax.plot([top[0], front[0]], [top[1], front[1]],
+            color=construction_color, linestyle="--", linewidth=0.9, zorder=1)
+
+ax.plot(*elevation.T, "o-", color=front_color, linewidth=2.2, zorder=3)
+ax.plot(*plan.T, "o-", color=plan_color, linewidth=2.2, zorder=3)
+for point, label, offset in [
+    (elevation[0], "$a'$", (-12, 10)),
+    (elevation[1], "$b'$", (12, 10)),
+    (plan[0], "$a$", (-12, -8)),
+    (plan[1], "$b$", (12, -3)),
+]:
+    ax.annotate(label, point, textcoords="offset points", xytext=offset,
+                ha="center", fontsize=13)
+
+
+def dimension(start, end, offset, label, rotation=0):
+    """Offset dimension with extension lines; all coordinates use drawing units."""
+    shift = np.asarray(offset)
+    p, q = start + shift, end + shift
+    for original, shifted in [(start, p), (end, q)]:
+        ax.plot([original[0], shifted[0]], [original[1], shifted[1]],
+                color=construction_color, linewidth=0.8)
+    ax.annotate("", xy=q, xytext=p,
+                arrowprops=dict(arrowstyle="<->", color="black", linewidth=0.9,
+                                shrinkA=0, shrinkB=0))
+    midpoint = (p + q) / 2
+    ax.text(*midpoint, label, ha="center", va="center", fontsize=10,
+            rotation=rotation, rotation_mode="anchor",
+            bbox=dict(facecolor="white", edgecolor="none", pad=2.5))
+
+
+dimension(elevation[0], elevation[1], [0.0, 1.1],
+          f"$a'b' = 8\\cos45^\\circ = {front_length:.2f}$ units")
+# Offset the true-length dimension perpendicular to the top view.
+dimension(plan[0], plan[1], [-0.55, -0.55],
+          "$ab = 8$ units (true length)", rotation=-phi_deg)
+
+# Measure the inclination against a local reference parallel to XY, at a.
+radius = 1.35
+ax.plot([plan[0, 0], plan[0, 0] + 2.4], [plan[0, 1], plan[0, 1]],
+        color=construction_color, linestyle="-.", linewidth=0.8)
+ax.add_patch(Arc(plan[0], 2 * radius, 2 * radius,
+                 theta1=-phi_deg, theta2=0, color="black", linewidth=1.0))
+angle_position = plan[0] + 1.9 * np.array([
+    np.cos(-phi / 2), np.sin(-phi / 2)
+])
+ax.text(*angle_position, "$\\phi=45^\\circ$", ha="center", va="center", fontsize=11,
+        bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
+
+ax.text(4.8, 5.2, "Front view (elevation)", ha="center", fontsize=13,
+        color=front_color, weight="bold")
+ax.text(4.8, 2.25, "$a'b'\\parallel XY$; inclination to HP: $\\theta=0^\\circ$",
+        ha="center", fontsize=11)
+ax.text(6.3, -3.0, "Top view (plan)", ha="center", fontsize=13,
+        color=plan_color, weight="bold")
+ax.text(6.3, -3.55, "True length and true inclination to VP",
+        ha="center", fontsize=10)
+
+ax.set_aspect("equal", adjustable="box")
+ax.set_xlim(-0.8, 9.8)
+ax.set_ylim(-9.0, 5.8)
+ax.axis("off")
+fig.tight_layout()
+plt.show()
 ```
+
+The projectors confirm that $a$ and $a'$ share one horizontal position,
+and $b$ and $b'$ share the other. In this first-angle drawing the top view
+slopes downwards because B is farther in front of VP; the magnitude of its
+angle to XY is still 45°. The locations relative to XY represent distances
+from the projection planes, not additional inclinations of the line.
